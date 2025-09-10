@@ -1,0 +1,37 @@
+﻿using IdentityEmailApp.Entities;
+using IdentityEmailApp.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+
+namespace IdentityEmailApp.Controllers
+{
+    public class LoginController(UserManager<AppUser> _userManager, 
+                                 SignInManager<AppUser> _signInManager) : Controller
+    {
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(LoginViewModel model)
+        {
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if(user is null)
+            {
+                ModelState.AddModelError("", "This email couldn't be found in the system.");
+                return View(model);
+            }
+            var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
+
+            if (!result.Succeeded) 
+            {
+                ModelState.AddModelError("", "Email or Password is wrong.");
+                return View(model);
+            
+            }
+
+            return RedirectToAction("Index","Home");
+        }
+    }
+}
