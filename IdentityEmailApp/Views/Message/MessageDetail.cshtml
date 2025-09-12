@@ -1,0 +1,27 @@
+﻿@model Message
+@{
+    ViewData["Title"] = "MessageDetail";
+}
+
+<h1>Message Detail</h1>
+
+<table class="table table-striped">
+    <tr>
+        <th>Sender Full Name:</th>
+        <td>@Model.Sender.FirstName  @Model.Sender.LastName</td>
+    </tr>
+    <tr>
+        <th>Sender Email:</th>
+        <td>@Model.Sender.Email</td>
+    </tr>
+    <tr>
+        <th>Subject:</th>
+        <td>@Model.Subject</td>
+    </tr>
+    <tr>
+        <th>Message:</th>
+        <td>@Model.Body</td>
+    </tr>
+</table>
+
+<a href="/Message/Index" class="btn btn-info">Back to Messages</a>

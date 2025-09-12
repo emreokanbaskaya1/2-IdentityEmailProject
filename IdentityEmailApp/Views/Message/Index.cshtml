@@ -1,0 +1,42 @@
+﻿@model List<Message>
+@{
+    ViewData["Title"] = "Index";
+    int count = 0;
+}
+
+<h3>Incoming Messages</h3>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>#</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Konu</th>
+        <th>Date of Message</th>
+        <th>Action</th>
+    </tr>
+
+    @if (Model is not null && Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <th>@count</th>
+                <td>@(item.Sender?.FirstName)  @(item.Sender?.LastName)</td>
+                <td>@item.Sender?.Email</td>
+                <td>@item.Subject</td>
+                <td>@item.SendDate</td>
+                <td><a href="/Message/MessageDetail/@item.MessageId" class="btn btn-info">Open Message</a></td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="6" class="text-center">No messages found.</td>
+        </tr>
+    }
+</table>
+
+<a href="/Message/SendMessage" class="btn btn-primary">Send New Message</a>

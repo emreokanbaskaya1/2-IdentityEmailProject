@@ -26,6 +26,7 @@ builder.Services.AddIdentity<AppUser, AppRole>(config =>
 builder.Services.AddControllersWithViews();
 builder.Services.ConfigureApplicationCookie(opt =>
 {
+    opt.Cookie.Name = "IdentityCookie";
     opt.LoginPath = "/Login/Index";
 });
 
@@ -48,7 +49,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Message}/{action=SendMessage}/{id?}")
     .WithStaticAssets();
 
 

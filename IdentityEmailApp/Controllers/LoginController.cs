@@ -31,7 +31,7 @@ namespace IdentityEmailApp.Controllers
             
             }
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index","Message");
         }
     }
 }
