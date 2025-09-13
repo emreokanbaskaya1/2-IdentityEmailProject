@@ -10,9 +10,24 @@ namespace IdentityEmailApp.Controllers
 {
     public class MessageController(AppDbContext _context, UserManager<AppUser> _userManager) : Controller
     {
-        [Authorize]
-        public async Task<IActionResult> Index()
+        private async Task SetMessageCounts()
         {
+            var userName = User?.Identity?.Name;
+            if (!string.IsNullOrEmpty(userName))
+            {
+                var user = await _userManager.FindByNameAsync(userName);
+                if (user != null)
+                {
+                    ViewBag.unreadCount = _context.Messages.Count(x => x.ReceiverId == user.Id && x.IsRead == false && x.IsDeleted == false);
+                    ViewBag.trashCount = _context.Messages.Count(x => x.ReceiverId == user.Id && x.IsDeleted == true);
+                }
+            }
+        }
+        [Authorize]
+        public async Task<IActionResult> Index(int page = 1)
+        {
+            await SetMessageCounts();
+
             var userName = User?.Identity?.Name;
             if (string.IsNullOrEmpty(userName))
             {
@@ -25,12 +40,25 @@ namespace IdentityEmailApp.Controllers
                 return View(new List<Message>());
             }
 
+            int pageSize = 5; // Her sayfada 5 mesaj
+            int skip = (page - 1) * pageSize;
+
+            var totalMessages = await _context.Messages
+                .Where(x => x.ReceiverId == user.Id && x.IsDeleted == false)
+                .CountAsync();
+
             var messages = await _context.Messages
                 .AsNoTracking()
                 .Include(x => x.Sender)
-                .Where(x => x.ReceiverId == user.Id)
+                .Where(x => x.ReceiverId == user.Id && x.IsDeleted == false)
                 .OrderByDescending(x => x.SendDate)
+                .Skip(skip)
+                .Take(pageSize)
                 .ToListAsync();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalMessages / pageSize);
+            ViewBag.TotalMessages = totalMessages;
 
             return View(messages);
         }
@@ -41,10 +69,12 @@ namespace IdentityEmailApp.Controllers
             return View(message);
         }
 
-        public IActionResult SendMessage()
+        public async Task<IActionResult> SendMessage()
         {
+            await SetMessageCounts();
             return View();
         }
+
 
         [HttpPost]
         public async Task<IActionResult> SendMessage(SendMessageViewModel model)
@@ -64,5 +94,128 @@ namespace IdentityEmailApp.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        
+
+        public IActionResult MarkAsRead(int id)  
+        {
+            var message = _context.Messages.Find(id);
+            if (message != null)
+            {
+                message.IsRead = true;
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult MarkAsUnread(int id)  
+        {
+            var message = _context.Messages.Find(id);
+            if (message != null)
+            {
+                message.IsRead = false;
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult DeleteMessage(int id)  
+        {
+            var message = _context.Messages.Find(id);
+            if (message != null)
+            {
+                message.IsDeleted = true;
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+
+        public async Task<IActionResult> Trash()
+        {
+            await SetMessageCounts();
+
+            var userName = User?.Identity?.Name;
+            if (string.IsNullOrEmpty(userName))
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            var user = await _userManager.FindByNameAsync(userName);
+            if (user == null)
+            {
+                return View(new List<Message>());
+            }
+
+            var deletedMessages = await _context.Messages
+                .AsNoTracking()
+                .Include(x => x.Sender)
+                .Where(x => x.ReceiverId == user.Id && x.IsDeleted == true)
+                .OrderByDescending(x => x.SendDate)
+                .ToListAsync();
+
+            return View(deletedMessages);
+        }
+
+        public IActionResult RestoreMessage(int id)  
+        {
+            var message = _context.Messages.Find(id);
+            if (message != null)
+            {
+                message.IsDeleted = false;
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Trash");
+        }
+
+        public IActionResult PermanentlyDeleteMessage(int id)  
+        {
+            var message = _context.Messages.Find(id);
+            if (message != null)
+            {
+                _context.Messages.Remove(message);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Trash");
+        }
+        public async Task<IActionResult> SentMessages(int page = 1)  
+        {
+            await SetMessageCounts();
+
+            var userName = User?.Identity?.Name;
+            if (string.IsNullOrEmpty(userName))
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            var user = await _userManager.FindByNameAsync(userName);
+            if (user == null)
+            {
+                return View(new List<Message>());
+            }
+
+            int pageSize = 5; // Her sayfada 5 mesaj
+            int skip = (page - 1) * pageSize;
+
+            var totalMessages = await _context.Messages
+                .Where(x => x.SenderId == user.Id && x.IsDeleted == false)
+                .CountAsync();
+
+            var messages = await _context.Messages
+                .AsNoTracking()
+                .Include(x => x.Receiver)
+                .Where(x => x.SenderId == user.Id && x.IsDeleted == false)
+                .OrderByDescending(x => x.SendDate)
+                .Skip(skip)
+                .Take(pageSize)
+                .ToListAsync();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalMessages / pageSize);
+            ViewBag.TotalMessages = totalMessages;
+
+            return View(messages);
+        }
+
     }
 }

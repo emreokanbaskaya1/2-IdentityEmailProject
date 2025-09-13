@@ -1,42 +1,134 @@
 ﻿@model List<Message>
 @{
+    Layout = "~/Views/MainLayout/Index.cshtml"; 
     ViewData["Title"] = "Index";
     int count = 0;
 }
 
-<h3>Incoming Messages</h3>
+<div class="col-md-9">
+    <div class="card card-primary card-outline">
+        <div class="card-header">
+            <h3 class="card-title">Incoming Message</h3>
 
-<table class="table table-bordered table-striped">
-    <tr>
-        <th>#</th>
-        <th>Full Name</th>
-        <th>Email</th>
-        <th>Konu</th>
-        <th>Date of Message</th>
-        <th>Action</th>
-    </tr>
+            <div class="card-tools">
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" placeholder="Search Mail">
+                    <div class="input-group-append">
+                        <div class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-tools -->
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0">
+            <div class="mailbox-controls">
+                <!-- Check all button -->
+                <button type="button" class="btn btn-default btn-sm checkbox-toggle">
+                    <i class="far fa-square"></i>
+                </button>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
+                </div>
+                <!-- /.btn-group -->
+                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
+                <div class="float-right">
+                    @{
+                        int startItem = ((ViewBag.CurrentPage - 1) * 5) + 1;
+                        int endItem = Math.Min(ViewBag.CurrentPage * 5, ViewBag.TotalMessages);
+                    }
+                    @startItem-@endItem/@ViewBag.TotalMessages
+                    <div class="btn-group">
+                        @if (ViewBag.CurrentPage > 1)
+                        {
+                            <a href="/Message/Index?page=@(ViewBag.CurrentPage - 1)" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></a>
+                        }
+                        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                        {
+                            <a href="/Message/Index?page=@(ViewBag.CurrentPage + 1)" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></a>
+                        }
+                    </div>
+                    <!-- /.btn-group -->
+                </div>
+                <!-- /.float-right -->
+            </div>
+            <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                    <tbody>
+                        @foreach(var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="icheck-primary">
+                                        <input type="checkbox" value="" id="check1">
+                                        <label for="check1"></label>
+                                    </div>
+                                </td>
+                                <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
+                                <td class="mailbox-name"><a href="/Message/MessageDetail/@item.MessageId">@item.Sender.FirstName  @item.Sender.LastName</a></td>
+                                <td class="mailbox-subject">
+                                    <b>@item.Subject</b>
+                                </td>
+                                <td class="mailbox-attachment"></td>
+                                <td class="mailbox-date">@item.SendDate.ToShortDateString()</td>
 
-    @if (Model is not null && Model.Any())
-    {
-        foreach (var item in Model)
-        {
-            count++;
-            <tr>
-                <th>@count</th>
-                <td>@(item.Sender?.FirstName)  @(item.Sender?.LastName)</td>
-                <td>@item.Sender?.Email</td>
-                <td>@item.Subject</td>
-                <td>@item.SendDate</td>
-                <td><a href="/Message/MessageDetail/@item.MessageId" class="btn btn-info">Open Message</a></td>
-            </tr>
-        }
-    }
-    else
-    {
-        <tr>
-            <td colspan="6" class="text-center">No messages found.</td>
-        </tr>
-    }
-</table>
+                                @if (@item.IsRead == true)
+                                {
+                                    <td><a href="/Message/MarkAsUnread/@item.MessageId" class="btn btn-info">Read</a></td>
+                                }
+                                else
+                                {
+                                    <td><a href="/Message/MarkAsRead/@item.MessageId" class="btn btn-warning">Unread</a></td>
+                                }
 
-<a href="/Message/SendMessage" class="btn btn-primary">Send New Message</a>
+                                <td><a href="/Message/DeleteMessage/@item.MessageId" class="btn btn-danger">Delete</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <!-- /.table -->
+            </div>
+            <!-- /.mail-box-messages -->
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer p-0">
+            <div class="mailbox-controls">
+                <!-- Check all button -->
+                <button type="button" class="btn btn-default btn-sm checkbox-toggle">
+                    <i class="far fa-square"></i>
+                </button>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
+                </div>
+                <!-- /.btn-group -->
+                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
+                <div class="float-right">
+                    @{
+                        int startItem2 = ((ViewBag.CurrentPage - 1) * 5) + 1;
+                        int endItem2 = Math.Min(ViewBag.CurrentPage * 5, ViewBag.TotalMessages);
+                    }
+                    @startItem2-@endItem2/@ViewBag.TotalMessages
+                    <div class="btn-group">
+                        @if (ViewBag.CurrentPage > 1)
+                        {
+                            <a href="/Message/Index?page=@(ViewBag.CurrentPage - 1)" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></a>
+                        }
+                        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                        {
+                            <a href="/Message/Index?page=@(ViewBag.CurrentPage + 1)" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></a>
+                        }
+                    </div>
+                    <!-- /.btn-group -->
+                </div>
+                <!-- /.float-right -->
+            </div>
+        </div>
+    </div>
+    <!-- /.card -->
+</div>
