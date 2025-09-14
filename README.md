@@ -139,8 +139,7 @@ IdentityEmailApp/
 ## 📸 Application Screenshots & Features
 
 ### 1. Login Screen
-![Login Screen](<img width="1200" height="400" alt="1" src="https://github.com/user-attachments/assets/b990117b-a7a4-48b2-93f0-e39841977d33" />
-)
+<img width="1919" height="991" alt="1" src="https://github.com/user-attachments/assets/109b079c-878b-49ae-b038-0033d9b6200c" />
 
 This screen allows registered users to **sign in** with their email and password.  
 - Email and password input validation.  
