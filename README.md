@@ -1,204 +1,204 @@
 # 📧 MyAcademy Identity Email Project
 
-ASP.NET Core Identity tabanlı modern email/mesajlaşma uygulaması. Kullanıcıların güvenli bir şekilde mesaj gönderip alabileceği, taslak kaydedebileceği ve mesajlarını yönetebileceği tam özellikli bir platform.
+A modern email/messaging application based on ASP.NET Core Identity. A full-featured platform where users can securely send and receive messages, save drafts, and manage their messages.
 
-## ✨ Özellikler
+## ✨ Features
 
-### 🔐 Kimlik Doğrulama
-- **Kullanıcı Kaydı** - Email ve şifre ile hesap oluşturma
-- **Güvenli Giriş** - ASP.NET Core Identity ile kimlik doğrulama
-- **Oturum Yönetimi** - Güvenli çıkış ve oturum kontrolü
+### 🔐 Authentication
+- **User Registration** - Create account with email and password
+- **Secure Login** - Authentication with ASP.NET Core Identity
+- **Session Management** - Secure logout and session control
 
-### 📨 Mesaj Yönetimi
-- **Gelen Kutusu** - Son 3 mesajı öncelikli gösterim
-- **Gönderilen Mesajlar** - Gönderilen tüm mesajları listeleme
-- **Taslak Sistemi** - Mesajları taslak olarak kaydetme ve düzenleme
-- **Çöp Kutusu** - Silinen mesajları geri getirme
-- **Önemli Mesajlar** - Yıldızla işaretleme sistemi
+### 📨 Message Management
+- **Inbox** - Priority display of last 3 messages
+- **Sent Messages** - List all sent messages
+- **Draft System** - Save and edit messages as drafts
+- **Trash** - Restore deleted messages
+- **Important Messages** - Star marking system
 
-### 🎯 Mesaj İşlemleri
-- **Okundu/Okunmadı** - Mesaj durumunu değiştirme
-- **Silme** - Soft delete ile güvenli silme
-- **Geri Getirme** - Çöp kutusundan mesajları geri alma
-- **Taslak Düzenleme** - Kaydedilen taslakları düzenleme
+### 🎯 Message Operations
+- **Read/Unread** - Change message status
+- **Delete** - Secure deletion with soft delete
+- **Restore** - Restore messages from trash
+- **Draft Editing** - Edit saved drafts
 
-### 📱 Kullanıcı Arayüzü
-- **Modern Tasarım** - AdminLTE 3.0.4 ile profesyonel görünüm
-- **Responsive** - Mobil ve masaüstü uyumlu
-- **Dinamik Header** - Son 3 mesajı dropdown'da gösterme
-- **Sayfalama** - 5'er mesaj ile performanslı listeleme
-- **Gerçek Zamanlı Sayılar** - Okunmamış, çöp kutusu, önemli mesaj sayıları
+### 📱 User Interface
+- **Modern Design** - Professional look with AdminLTE 3.0.4
+- **Responsive** - Mobile and desktop compatible
+- **Dynamic Header** - Show last 3 messages in dropdown
+- **Pagination** - Performance listing with 5 messages per page
+- **Real-time Counts** - Unread, trash, important message counts
 
-## 🛠️ Teknolojiler
+## 🛠️ Technologies
 
 ### Backend
 - **ASP.NET Core 9.0** - Modern web framework
-- **Entity Framework Core** - ORM ve veritabanı yönetimi
-- **ASP.NET Core Identity** - Kimlik doğrulama ve yetkilendirme
-- **SQL Server** - Veritabanı
+- **Entity Framework Core** - ORM and database management
+- **ASP.NET Core Identity** - Authentication and authorization
+- **SQL Server** - Database
 
 ### Frontend
-- **AdminLTE 3.0.4** - Modern admin panel teması
+- **AdminLTE 3.0.4** - Modern admin panel theme
 - **Bootstrap 4** - Responsive CSS framework
-- **FontAwesome** - İkon kütüphanesi
-- **jQuery** - JavaScript kütüphanesi
+- **FontAwesome** - Icon library
+- **jQuery** - JavaScript library
 
-### Veritabanı
-- **Code First Migration** - Veritabanı şeması yönetimi
-- **Soft Delete** - Güvenli veri silme
-- **Foreign Key Relations** - İlişkisel veri yapısı
+### Database
+- **Code First Migration** - Database schema management
+- **Soft Delete** - Secure data deletion
+- **Foreign Key Relations** - Relational data structure
 
-## 📁 Proje Yapısı
+## 📁 Project Structure
 
 ```
 IdentityEmailApp/
 ├── Controllers/
-│   ├── HomeController.cs          # Ana sayfa kontrolcüsü
-│   ├── LoginController.cs         # Giriş/çıkış kontrolcüsü
-│   ├── RegisterController.cs      # Kayıt kontrolcüsü
-│   ├── MessageController.cs       # Mesaj işlemleri kontrolcüsü
-│   └── MainLayoutController.cs    # Layout veri kontrolcüsü
+│   ├── HomeController.cs          # Home page controller
+│   ├── LoginController.cs         # Login/logout controller
+│   ├── RegisterController.cs      # Registration controller
+│   ├── MessageController.cs       # Message operations controller
+│   └── MainLayoutController.cs    # Layout data controller
 ├── Entities/
-│   ├── AppUser.cs                 # Kullanıcı entity'si
-│   ├── AppRole.cs                 # Rol entity'si
-│   └── Message.cs                 # Mesaj entity'si
+│   ├── AppUser.cs                 # User entity
+│   ├── AppRole.cs                 # Role entity
+│   └── Message.cs                 # Message entity
 ├── Models/
-│   ├── LoginViewModel.cs          # Giriş modeli
-│   ├── RegisterViewModel.cs       # Kayıt modeli
-│   └── SendMessageViewModel.cs    # Mesaj gönderme modeli
+│   ├── LoginViewModel.cs          # Login model
+│   ├── RegisterViewModel.cs       # Registration model
+│   └── SendMessageViewModel.cs    # Send message model
 ├── Views/
 │   ├── MainLayout/
-│   │   └── Index.cshtml           # Ana layout
+│   │   └── Index.cshtml           # Main layout
 │   ├── Message/
-│   │   ├── Index.cshtml           # Gelen kutusu
-│   │   ├── SendMessage.cshtml     # Mesaj gönderme
-│   │   ├── SentMessages.cshtml    # Gönderilen mesajlar
-│   │   ├── Drafts.cshtml          # Taslaklar
-│   │   ├── Trash.cshtml           # Çöp kutusu
-│   │   └── MessageDetail.cshtml   # Mesaj detayı
+│   │   ├── Index.cshtml           # Inbox
+│   │   ├── SendMessage.cshtml     # Send message
+│   │   ├── SentMessages.cshtml    # Sent messages
+│   │   ├── Drafts.cshtml          # Drafts
+│   │   ├── Trash.cshtml           # Trash
+│   │   └── MessageDetail.cshtml   # Message detail
 │   ├── Login/
-│   │   └── Index.cshtml           # Giriş sayfası
+│   │   └── Index.cshtml           # Login page
 │   └── Register/
-│       └── SignUp.cshtml          # Kayıt sayfası
+│       └── SignUp.cshtml          # Registration page
 ├── Context/
-│   └── AppDbContext.cs            # Veritabanı context'i
+│   └── AppDbContext.cs            # Database context
 ├── Validations/
-│   └── CustomErrorDescriber.cs    # Özel hata mesajları
-└── Migrations/                     # Veritabanı migration'ları
+│   └── CustomErrorDescriber.cs    # Custom error messages
+└── Migrations/                     # Database migrations
 ```
 
-## 🚀 Kurulum
+## 🚀 Installation
 
-### Gereksinimler
+### Requirements
 - .NET 9.0 SDK
-- SQL Server (LocalDB desteklenir)
-- Visual Studio 2022 veya VS Code
+- SQL Server (LocalDB supported)
+- Visual Studio 2022 or VS Code
 
-### Adımlar
+### Steps
 
-1. **Projeyi klonlayın**
+1. **Clone the project**
 ```bash
 git clone https://github.com/yourusername/MyAcademyIdentityProject.git
 cd MyAcademyIdentityProject
 ```
 
-2. **Paketleri yükleyin**
+2. **Install packages**
 ```bash
 dotnet restore
 ```
 
-3. **Veritabanını oluşturun**
+3. **Create database**
 ```bash
 dotnet ef database update
 ```
 
-4. **Uygulamayı çalıştırın**
+4. **Run the application**
 ```bash
 dotnet run
 ```
 
-5. **Tarayıcıda açın**
+5. **Open in browser**
 ```
 https://localhost:7058
 ```
 
-## 📊 Veritabanı Şeması
+## 📊 Database Schema
 
-### AppUser (Kullanıcılar)
-- `Id` - Benzersiz kullanıcı ID'si
-- `FirstName` - Ad
-- `LastName` - Soyad
-- `Email` - Email adresi
-- `UserName` - Kullanıcı adı
+### AppUser (Users)
+- `Id` - Unique user ID
+- `FirstName` - First name
+- `LastName` - Last name
+- `Email` - Email address
+- `UserName` - Username
 
-### Message (Mesajlar)
-- `MessageId` - Benzersiz mesaj ID'si
-- `SenderId` - Gönderen kullanıcı ID'si
-- `ReceiverId` - Alıcı kullanıcı ID'si (nullable - taslaklar için)
-- `Subject` - Mesaj konusu
-- `Body` - Mesaj içeriği
-- `SendDate` - Gönderim tarihi
-- `IsRead` - Okundu durumu
-- `IsDeleted` - Silindi durumu (soft delete)
-- `IsImportant` - Önemli mesaj durumu
-- `IsDraft` - Taslak durumu
-- `DraftDate` - Taslak kayıt tarihi
+### Message (Messages)
+- `MessageId` - Unique message ID
+- `SenderId` - Sender user ID
+- `ReceiverId` - Receiver user ID (nullable - for drafts)
+- `Subject` - Message subject
+- `Body` - Message content
+- `SendDate` - Send date
+- `IsRead` - Read status
+- `IsDeleted` - Deleted status (soft delete)
+- `IsImportant` - Important message status
+- `IsDraft` - Draft status
+- `DraftDate` - Draft save date
 
-## 🔧 Özellik Detayları
+## 🔧 Feature Details
 
-### Mesaj Sistemi
-- **Gelen Kutusu**: Son 3 mesajı öncelikli gösterir
-- **Pagination**: 5'er mesaj ile performanslı listeleme
-- **Soft Delete**: Mesajlar fiziksel olarak silinmez
-- **Draft System**: Mesajları taslak olarak kaydetme
+### Message System
+- **Inbox**: Priority display of last 3 messages
+- **Pagination**: Performance listing with 5 messages per page
+- **Soft Delete**: Messages are not physically deleted
+- **Draft System**: Save messages as drafts
 
-### Güvenlik
-- **Identity Framework**: Güvenli kimlik doğrulama
-- **Authorization**: Sayfa bazlı yetkilendirme
-- **Input Validation**: Giriş doğrulama
-- **SQL Injection Protection**: Entity Framework ile korunma
+### Security
+- **Identity Framework**: Secure authentication
+- **Authorization**: Page-based authorization
+- **Input Validation**: Input validation
+- **SQL Injection Protection**: Protected with Entity Framework
 
-### Performans
-- **Optimized AdminLTE**: Gereksiz dosyalar kaldırıldı
-- **Async Operations**: Asenkron veritabanı işlemleri
-- **Efficient Queries**: Optimize edilmiş sorgular
+### Performance
+- **Optimized AdminLTE**: Unnecessary files removed
+- **Async Operations**: Asynchronous database operations
+- **Efficient Queries**: Optimized queries
 
-## 🎨 Ekran Görüntüleri
+## 🎨 Screenshots
 
-### Ana Sayfa
-- Modern sidebar navigasyon
-- Dinamik mesaj sayıları
-- Son 3 mesaj dropdown'ı
+### Home Page
+- Modern sidebar navigation
+- Dynamic message counts
+- Last 3 messages dropdown
 
-### Mesaj Yönetimi
-- Temiz liste görünümü
-- Hızlı işlem butonları
-- Responsive tasarım
+### Message Management
+- Clean list view
+- Quick action buttons
+- Responsive design
 
-## 🤝 Katkıda Bulunma
+## 🤝 Contributing
 
-1. Fork yapın
-2. Feature branch oluşturun (`git checkout -b feature/AmazingFeature`)
-3. Commit yapın (`git commit -m 'Add some AmazingFeature'`)
-4. Push yapın (`git push origin feature/AmazingFeature`)
-5. Pull Request oluşturun
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## 📝 Lisans
+## 📝 License
 
-Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosyasına bakın.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
-## 👨‍💻 Geliştirici
+## 👨‍💻 Developer
 
 **Okan Baskaya**
 - GitHub: [@yourusername](https://github.com/yourusername)
 - LinkedIn: [Okan Baskaya](https://linkedin.com/in/okanbaskaya)
 
-## 📞 İletişim
+## 📞 Contact
 
-Proje hakkında sorularınız için:
+For questions about this project:
 - Email: okan@example.com
 - GitHub Issues: [Issues](https://github.com/yourusername/MyAcademyIdentityProject/issues)
 
 ---
 
-⭐ **Bu projeyi beğendiyseniz yıldız vermeyi unutmayın!**
+⭐ **If you liked this project, don't forget to give it a star!**
