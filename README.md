@@ -228,7 +228,17 @@ Top-bar dropdown displaying quick notifications of recent messages.
 
 Top-right user menu for account management.  
 - Displays the logged-in user’s name.  
-- **Logout** button to securely sign out using ASP.NET Identity authentication.  
+- **Logout** button to securely sign out using ASP.NET Identity authentication.
+
+### 10. Multi-User Inbox
+<img width="1919" height="991" alt="10" src="https://github.com/user-attachments/assets/4ff6b0e0-2e1a-4483-9b0f-dd52bea5dfc8" />
+
+
+This screen demonstrates that **different user accounts** can log in and view only their own mailbox.  
+- Each user has an isolated inbox.  
+- The system ensures **data separation**: users can only see the messages sent to them.  
+- Supports all actions: **Read/Unread toggle**, **Delete**, and **Label management**.  
+- Example: One user sees messages from "Okan Baskaya", while another sees their own mailbox content independently.  
 
 
 ## 📝 License
