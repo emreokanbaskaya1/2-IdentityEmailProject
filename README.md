@@ -1,4 +1,4 @@
-# 📧 MyAcademy Identity Email Project
+# 📧 Identity Email Project
 
 A modern email/messaging application based on ASP.NET Core Identity. A full-featured platform where users can securely send and receive messages, save drafts, and manage their messages.
 
