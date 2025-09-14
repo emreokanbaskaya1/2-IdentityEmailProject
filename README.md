@@ -172,7 +172,8 @@ The main mailbox interface for receiving messages.
 ---
 
 ### 4. Sent Messages
-![Sent Messages](./screenshots/screenshot-4.png)
+<img width="1919" height="991" alt="4" src="https://github.com/user-attachments/assets/3db1bdae-f705-4286-b774-077de840c5be" />
+
 
 Shows all messages sent by the current user.  
 - List of sent messages with subject and date.  
@@ -181,7 +182,8 @@ Shows all messages sent by the current user.
 ---
 
 ### 5. Drafts
-![Drafts](./screenshots/screenshot-5.png)
+<img width="1919" height="991" alt="5" src="https://github.com/user-attachments/assets/19e403a4-aa13-4726-b4e3-0728c0df9d48" />
+
 
 Displays all saved drafts.  
 - Draft messages saved with subject and date.  
@@ -191,7 +193,7 @@ Displays all saved drafts.
 ---
 
 ### 6. Trash
-![Trash](./screenshots/screenshot-6.png)
+<img width="1919" height="991" alt="6" src="https://github.com/user-attachments/assets/5cff5624-c06a-492a-be06-d0b05695248e" />
 
 The trash folder for deleted messages.  
 - Shows deleted messages with subject, sender, and date.  
@@ -200,7 +202,8 @@ The trash folder for deleted messages.
 ---
 
 ### 7. Important Messages
-![Important Messages](./screenshots/screenshot-7.png)
+<img width="1919" height="991" alt="7" src="https://github.com/user-attachments/assets/e7afd1e9-0010-4b9c-b20c-aeb3821d5c0a" />
+
 
 A dedicated view for all messages marked as **important**.  
 - Starred messages are highlighted and filtered here.  
@@ -209,7 +212,8 @@ A dedicated view for all messages marked as **important**.
 ---
 
 ### 8. Notifications Dropdown
-![Notifications Dropdown](./screenshots/screenshot-8.png)
+<img width="628" height="523" alt="8" src="https://github.com/user-attachments/assets/992dbc51-60c1-4834-b6e9-d6af563af05d" />
+
 
 Top-bar dropdown displaying quick notifications of recent messages.  
 - Shows sender name, subject, and received time.  
@@ -219,7 +223,8 @@ Top-bar dropdown displaying quick notifications of recent messages.
 ---
 
 ### 9. User Profile & Logout
-![User Profile & Logout](./screenshots/screenshot-9.png)
+<img width="394" height="311" alt="9" src="https://github.com/user-attachments/assets/8bf535db-b9f6-4509-b9bf-35abc0c9448b" />
+
 
 Top-right user menu for account management.  
 - Displays the logged-in user’s name.  
