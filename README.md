@@ -255,11 +255,6 @@ This screen displays the full **message details**.
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
-## 👨‍💻 Developer
-
-**Okan Baskaya**
-- GitHub: [@emreokanbaskaya1](https://github.com/emreokanbaskaya1)
-- LinkedIn: [Okan Baskaya]([https://www.linkedin.com/in/emre-okan-baskaya/])
 
 ## 📞 Contact
 
