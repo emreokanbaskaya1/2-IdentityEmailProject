@@ -240,6 +240,16 @@ This screen demonstrates that **different user accounts** can log in and view on
 - Supports all actions: **Read/Unread toggle**, **Delete**, and **Label management**.  
 - Example: One user sees messages from "Okan Baskaya", while another sees their own mailbox content independently.  
 
+### 11. Message Detail
+<img width="1919" height="991" alt="image" src="https://github.com/user-attachments/assets/9bb6af26-c8aa-49a4-9685-8a247c82dc08" />
+
+
+This screen displays the full **message details**.  
+- Shows sender email, subject, and timestamp.  
+- Displays the complete message body.  
+- Provides a user-friendly way to manage single message interactions.  
+
+
 
 ## 📝 License
 
