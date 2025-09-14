@@ -94,33 +94,6 @@ IdentityEmailApp/
 - SQL Server (LocalDB supported)
 - Visual Studio 2022 or VS Code
 
-### Steps
-
-1. **Clone the project**
-```bash
-git clone https://github.com/yourusername/MyAcademyIdentityProject.git
-cd MyAcademyIdentityProject
-```
-
-2. **Install packages**
-```bash
-dotnet restore
-```
-
-3. **Create database**
-```bash
-dotnet ef database update
-```
-
-4. **Run the application**
-```bash
-dotnet run
-```
-
-5. **Open in browser**
-```
-https://localhost:7058
-```
 
 ## 📊 Database Schema
 
@@ -166,7 +139,8 @@ https://localhost:7058
 ## 📸 Application Screenshots & Features
 
 ### 1. Login Screen
-![Login Screen](./screenshots/screenshot-1.png)
+![Login Screen](<img width="1200" height="400" alt="1" src="https://github.com/user-attachments/assets/b990117b-a7a4-48b2-93f0-e39841977d33" />
+)
 
 This screen allows registered users to **sign in** with their email and password.  
 - Email and password input validation.  
