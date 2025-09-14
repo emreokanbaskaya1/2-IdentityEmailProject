@@ -49,7 +49,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Message}/{action=SendMessage}/{id?}")
+    pattern: "{controller=Message}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 

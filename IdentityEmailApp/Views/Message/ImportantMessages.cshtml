@@ -1,15 +1,16 @@
 ﻿@model List<Message>
 @{
-    Layout = "~/Views/MainLayout/Index.cshtml"; 
-    ViewData["Title"] = "Sent Messages";
+    Layout = "~/Views/MainLayout/Index.cshtml";
+    ViewData["Title"] = "Important Messages";
 }
 
 <div class="col-md-9">
     <div class="card card-primary card-outline">
         <div class="card-header">
-            <h3 class="card-title">Sent Messages</h3>
+            <h3 class="card-title">Important Messages</h3>
+
         </div>
-        
+
         <div class="card-body p-0">
             <div class="mailbox-controls">
                 <div class="float-right">
@@ -21,39 +22,57 @@
                     <div class="btn-group">
                         @if (ViewBag.CurrentPage > 1)
                         {
-                            <a href="/Message/SentMessages?page=@(ViewBag.CurrentPage - 1)" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></a>
+                            <a href="/Message/ImportantMessages?page=@(ViewBag.CurrentPage - 1)" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></a>
                         }
                         @if (ViewBag.CurrentPage < ViewBag.TotalPages)
                         {
-                            <a href="/Message/SentMessages?page=@(ViewBag.CurrentPage + 1)" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></a>
+                            <a href="/Message/ImportantMessages?page=@(ViewBag.CurrentPage + 1)" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></a>
                         }
                     </div>
                 </div>
             </div>
-            
+
             <div class="table-responsive mailbox-messages">
                 <table class="table table-hover table-striped">
                     <tbody>
-                        @foreach(var item in Model)
+                        @foreach (var item in Model)
                         {
                             <tr>
                                 
-                                <td class="mailbox-name">@(item.Receiver?.FirstName ?? "Unknown") @(item.Receiver?.LastName ?? "")</td>
+                                <td class="mailbox-star">
+                                    <a href="/Message/MarkAsNotImportant/@item.MessageId" title="Remove from Important">
+                                        <i class="fas fa-star text-warning"></i>
+                                    </a>
+                                </td>
+                                <td class="mailbox-name">
+                                    <a href="/Message/MessageDetail/@item.MessageId">@item.Sender.FirstName @item.Sender.LastName</a>
+                                </td>
                                 <td class="mailbox-subject">
                                     <b>@item.Subject</b>
                                 </td>
                                 <td class="mailbox-attachment"></td>
                                 <td class="mailbox-date">@item.SendDate.ToShortDateString()</td>
-                                <td><a href="/Message/MessageDetail/@item.MessageId" class="btn btn-info">View</a></td>
+
+                                @if (@item.IsRead == true)
+                                {
+                                    <td><a href="/Message/MarkAsUnread/@item.MessageId" class="btn btn-info">Read</a></td>
+                                }
+                                else
+                                {
+                                    <td><a href="/Message/MarkAsRead/@item.MessageId" class="btn btn-warning">Unread</a></td>
+                                }
+
+                                <td><a href="/Message/DeleteMessage/@item.MessageId" class="btn btn-danger">Delete</a></td>
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
         </div>
-        
+
         <div class="card-footer p-0">
             <div class="mailbox-controls">
+                
                 
                 <div class="float-right">
                     @{
@@ -64,11 +83,11 @@
                     <div class="btn-group">
                         @if (ViewBag.CurrentPage > 1)
                         {
-                            <a href="/Message/SentMessages?page=@(ViewBag.CurrentPage - 1)" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></a>
+                            <a href="/Message/ImportantMessages?page=@(ViewBag.CurrentPage - 1)" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></a>
                         }
                         @if (ViewBag.CurrentPage < ViewBag.TotalPages)
                         {
-                            <a href="/Message/SentMessages?page=@(ViewBag.CurrentPage + 1)" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></a>
+                            <a href="/Message/ImportantMessages?page=@(ViewBag.CurrentPage + 1)" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></a>
                         }
                     </div>
                 </div>

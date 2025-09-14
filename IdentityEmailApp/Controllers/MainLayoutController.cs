@@ -6,6 +6,7 @@ namespace IdentityEmailApp.Controllers
     {
         public IActionResult Index()
         {
+            // Layout dosyası model gerektirmez
             return View();
         }
     }
