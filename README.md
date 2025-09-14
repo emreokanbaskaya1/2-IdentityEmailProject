@@ -149,7 +149,8 @@ This screen allows registered users to **sign in** with their email and password
 ---
 
 ### 2. Registration Screen
-![Registration Screen](./screenshots/screenshot-2.png)
+<img width="1919" height="991" alt="2" src="https://github.com/user-attachments/assets/ebd51d1e-3c60-4cd6-98d5-c7db67d549a3" />
+
 
 The registration page where new users can create an account.  
 - Fields: First Name, Last Name, Username, Email, and Password.  
@@ -159,7 +160,8 @@ The registration page where new users can create an account.
 ---
 
 ### 3. Inbox
-![Inbox](./screenshots/screenshot-3.png)
+<img width="1919" height="991" alt="3" src="https://github.com/user-attachments/assets/47f1950a-cc1b-414d-bc38-47c222644832" />
+
 
 The main mailbox interface for receiving messages.  
 - Displays all **incoming messages** with sender, subject, date, and status (Read/Unread).  
