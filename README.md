@@ -190,7 +190,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 ## 👨‍💻 Developer
 
 **Okan Baskaya**
-- GitHub: [@yourusername](https://github.com/yourusername)
+- GitHub: [@emreokanbaskaya1](https://github.com/yourusername)
 - LinkedIn: [Okan Baskaya](https://linkedin.com/in/okanbaskaya)
 
 ## 📞 Contact
