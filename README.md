@@ -2,7 +2,7 @@
 
 A modern email/messaging application based on ASP.NET Core Identity. A full-featured platform where users can securely send and receive messages, save drafts, and manage their messages.
 
-## ✨ Features
+##  Features
 
 ### 🔐 Authentication
 - **User Registration** - Create account with email and password
