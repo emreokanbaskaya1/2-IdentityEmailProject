@@ -163,25 +163,93 @@ https://localhost:7058
 - **Async Operations**: Asynchronous database operations
 - **Efficient Queries**: Optimized queries
 
-## 🎨 Screenshots
+## 📸 Application Screenshots & Features
 
-### Home Page
-- Modern sidebar navigation
-- Dynamic message counts
-- Last 3 messages dropdown
+### 1. Login Screen
+![Login Screen](./screenshots/screenshot-1.png)
 
-### Message Management
-- Clean list view
-- Quick action buttons
-- Responsive design
+This screen allows registered users to **sign in** with their email and password.  
+- Email and password input validation.  
+- Quick navigation to the **Register** page for new users.  
+- Styled with AdminLTE components for a clean UI.  
 
-## 🤝 Contributing
+---
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+### 2. Registration Screen
+![Registration Screen](./screenshots/screenshot-2.png)
+
+The registration page where new users can create an account.  
+- Fields: First Name, Last Name, Username, Email, and Password.  
+- ASP.NET Identity validation for strong password rules and unique email/username.  
+- Direct integration with Entity Framework Core for user persistence.  
+
+---
+
+### 3. Inbox
+![Inbox](./screenshots/screenshot-3.png)
+
+The main mailbox interface for receiving messages.  
+- Displays all **incoming messages** with sender, subject, date, and status (Read/Unread).  
+- Message actions: **Mark as Read/Unread**, **Delete**.  
+- Sidebar with folders: Inbox, Sent, Drafts, Trash.  
+- Label system for marking important messages.  
+
+---
+
+### 4. Sent Messages
+![Sent Messages](./screenshots/screenshot-4.png)
+
+Shows all messages sent by the current user.  
+- List of sent messages with subject and date.  
+- **View** button to see the full details of a sent message.  
+
+---
+
+### 5. Drafts
+![Drafts](./screenshots/screenshot-5.png)
+
+Displays all saved drafts.  
+- Draft messages saved with subject and date.  
+- Ability to **Edit** or **Delete** drafts.  
+- Supports resuming draft editing before sending.  
+
+---
+
+### 6. Trash
+![Trash](./screenshots/screenshot-6.png)
+
+The trash folder for deleted messages.  
+- Shows deleted messages with subject, sender, and date.  
+- Options to **Restore** messages back to Inbox or permanently **Delete**.  
+
+---
+
+### 7. Important Messages
+![Important Messages](./screenshots/screenshot-7.png)
+
+A dedicated view for all messages marked as **important**.  
+- Starred messages are highlighted and filtered here.  
+- Actions: **Read/Unread** and **Delete**.  
+
+---
+
+### 8. Notifications Dropdown
+![Notifications Dropdown](./screenshots/screenshot-8.png)
+
+Top-bar dropdown displaying quick notifications of recent messages.  
+- Shows sender name, subject, and received time.  
+- Star icon for quickly marking messages as important.  
+- **See All Messages** link for full navigation.  
+
+---
+
+### 9. User Profile & Logout
+![User Profile & Logout](./screenshots/screenshot-9.png)
+
+Top-right user menu for account management.  
+- Displays the logged-in user’s name.  
+- **Logout** button to securely sign out using ASP.NET Identity authentication.  
+
 
 ## 📝 License
 
@@ -190,14 +258,13 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 ## 👨‍💻 Developer
 
 **Okan Baskaya**
-- GitHub: [@emreokanbaskaya1](https://github.com/yourusername)
+- GitHub: [@emreokanbaskaya1](https://github.com/emreokanbaskaya1)
 - LinkedIn: [Okan Baskaya](https://linkedin.com/in/okanbaskaya)
 
 ## 📞 Contact
 
 For questions about this project:
-- Email: okan@example.com
-- GitHub Issues: [Issues](https://github.com/yourusername/MyAcademyIdentityProject/issues)
+- Email: emreokanbaskaya@gmail.com
 
 ---
 
